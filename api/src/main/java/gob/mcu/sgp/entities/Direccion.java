@@ -2,17 +2,23 @@ package gob.mcu.sgp.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "direccion", schema = "sgp")
 public class Direccion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Integer numero;
     private String piso;
     private String departamento;
+
     @Column(name = "fecha_inicio", nullable = false)
     private LocalDate fechaInicio;
+
     @Column(name = "fecha_fin")
     private LocalDate fechaFin;
 
@@ -36,10 +42,13 @@ public class Direccion {
     @JoinColumn(name = "direccion_tipo_id")
     private DireccionTipo direccionTipo;
 
+    @ManyToMany(mappedBy = "direcciones")
+    private List<Persona> personas;
+
     public Direccion() {
     }
 
-    public Direccion(Long id, Integer numero, String piso, String departamento, LocalDate fechaInicio, LocalDate fechaFin, Calle calle, Calle entreCallePrimera, Calle entreCalleSegunda, Localidad localidad, DireccionTipo direccionTipo) {
+    public Direccion(Long id, Integer numero, String piso, String departamento, LocalDate fechaInicio, LocalDate fechaFin, Calle calle, Calle entreCallePrimera, Calle entreCalleSegunda, Localidad localidad, DireccionTipo direccionTipo, List<Persona> personas) {
         this.id = id;
         this.numero = numero;
         this.piso = piso;
@@ -51,6 +60,7 @@ public class Direccion {
         this.entreCalleSegunda = entreCalleSegunda;
         this.localidad = localidad;
         this.direccionTipo = direccionTipo;
+        this.personas = personas;
     }
 
     public Long getId() {
@@ -139,5 +149,13 @@ public class Direccion {
 
     public void setDireccionTipo(DireccionTipo direccionTipo) {
         this.direccionTipo = direccionTipo;
+    }
+
+    public List<Persona> getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(List<Persona> personas) {
+        this.personas = personas;
     }
 }

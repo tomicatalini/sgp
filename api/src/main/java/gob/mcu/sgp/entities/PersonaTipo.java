@@ -4,34 +4,34 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="pais", schema="sgp")
-public class Pais {
+@Table(name = "persona_tipo", schema = "sgp")
+public class PersonaTipo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long Id;
 
-    @Column(length = 120, nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
-    @OneToMany(mappedBy = "pais")
+    @OneToMany(mappedBy = "personaTipo")
     private List<Persona> personas;
 
-    public Pais() {
+    public PersonaTipo() {
     }
 
-    public Pais(Long id, String nombre, List<Persona> personas) {
-        this.id = id;
+    public PersonaTipo(Long id, String nombre, List<Persona> personas) {
+        Id = id;
         this.nombre = nombre;
         this.personas = personas;
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getNombre() {

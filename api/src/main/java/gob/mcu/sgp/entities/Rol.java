@@ -4,26 +4,26 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "direccion_tipo", schema = "sgp")
-public class DireccionTipo {
+@Table(name = "rol", schema = "sgp")
+public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 120, nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
-    @OneToMany(mappedBy = "direccionTipo")
-    private List<Direccion> direcciones;
+    @OneToMany(mappedBy = "rol")
+    private List<RolPersona> rolPersonas;
 
-    public DireccionTipo() {
+    public Rol() {
     }
 
-    public DireccionTipo(Long id, String nombre, List<Direccion> direcciones) {
+    public Rol(Long id, String nombre, List<RolPersona> rolPersonas) {
         this.id = id;
         this.nombre = nombre;
-        this.direcciones = direcciones;
+        this.rolPersonas = rolPersonas;
     }
 
     public Long getId() {
@@ -42,11 +42,11 @@ public class DireccionTipo {
         this.nombre = nombre;
     }
 
-    public List<Direccion> getDirecciones() {
-        return direcciones;
+    public List<RolPersona> getRolPersonas() {
+        return rolPersonas;
     }
 
-    public void setDirecciones(List<Direccion> direcciones) {
-        this.direcciones = direcciones;
+    public void setRolPersonas(List<RolPersona> rolPersonas) {
+        this.rolPersonas = rolPersonas;
     }
 }

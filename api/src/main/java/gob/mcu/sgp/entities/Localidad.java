@@ -6,11 +6,14 @@ import java.util.List;
 @Entity
 @Table(name = "localidad", schema = "sgp")
 public class Localidad {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(length = 120, nullable = false)
     private String nombre;
+
     @Column(length = 4, nullable = false)
     private String codigoPostal;
 

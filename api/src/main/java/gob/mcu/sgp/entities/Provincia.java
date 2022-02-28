@@ -6,9 +6,11 @@ import java.util.List;
 @Entity
 @Table(name = "provincia", schema = "sgp")
 public class Provincia {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(length = 120, nullable = false)
     private String nombre;
 
