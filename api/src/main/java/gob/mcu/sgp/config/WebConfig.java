@@ -15,11 +15,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Value("${apiUrl}")
     private String apiurl;
 
-    @Value("$apiVersion")
+    @Value("${apiVersion}")
     private String apiVersion;
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer){
         configurer.addPathPrefix( apiurl + "/" + apiVersion , HandlerTypePredicate.forAnnotation( RestController.class ));
     }
+
 }
